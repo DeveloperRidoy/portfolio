@@ -30,9 +30,4 @@ export const metrics: Metric[] = [
     label: "Saved per week",
     context: "QuickBooks integration and billing automation",
   },
-  {
-    value: "15+",
-    label: "Full-stack applications",
-    context: "Delivered across enterprise and contract work",
-  },
 ];

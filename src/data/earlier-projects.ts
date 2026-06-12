@@ -5,11 +5,14 @@ export interface EarlierProject {
 
 export const earlierProjects: EarlierProject[] = [
   { name: "Neon Shop", description: "E-commerce storefront" },
-  { name: "CodeX", description: "Developer community platform" },
+  { name: "CodeX", description: "Browser-based code editor" },
   { name: "Quizy", description: "Interactive quiz application" },
   { name: "Socket Chat", description: "Real-time messaging app" },
-  { name: "Waves Music", description: "Music streaming interface" },
-  { name: "Dev Connector", description: "Developer networking tool" },
+  {
+    name: "Waves Music",
+    description: "SoundCloud-powered music streaming application",
+  },
+  { name: "Dev Connector", description: "Developer social platform" },
   { name: "FlashForge", description: "Flashcard learning system" },
-  { name: "PixFi", description: "Image sharing application" },
+  { name: "PixFi", description: "Smart-contract pixel canvas" },
 ];

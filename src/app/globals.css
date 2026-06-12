@@ -74,3 +74,7 @@ body {
 .animate-pulse-slow {
   animation: pulse-slow 2s ease-in-out infinite;
 }
+
+.max-w-prose {
+  max-width: 65ch;
+}

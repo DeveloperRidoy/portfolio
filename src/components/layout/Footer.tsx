@@ -10,7 +10,7 @@ export function Footer() {
           © {year} {siteConfig.name}
         </p>
         <p className="text-xs text-muted">
-          Software Engineer · Backend & Full-Stack Development
+          Software Engineer · Workflow Automation & Enterprise Systems
         </p>
       </div>
     </footer>

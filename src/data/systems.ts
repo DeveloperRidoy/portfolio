@@ -1,32 +1,35 @@
 export interface SystemCard {
   title: string;
   description: string;
-  icon: "api" | "workflow" | "cloud" | "enterprise";
+  icon: "workflow" | "backend" | "cloud" | "enterprise";
 }
 
-export const systems: SystemCard[] = [
-  {
-    title: "Backend APIs & Integrations",
-    description:
-      "Designing REST APIs, authentication, authorization, database models, and third-party integrations for production systems.",
-    icon: "api",
-  },
+export const whatIBuild: SystemCard[] = [
   {
     title: "Workflow Automation",
     description:
-      "Building systems that replace manual business processes with structured, validated, trackable workflows.",
+      "Digitizing complex business processes — approvals, validations, review queues, and multi-stage operational workflows that replace manual handoffs.",
     icon: "workflow",
   },
   {
-    title: "Cloud-Based Processing",
+    title: "Backend Systems",
     description:
-      "Using AWS services for storage, async jobs, document handling, and scalable backend automation.",
+      "Designing the services, data models, and integrations that power business logic — authentication, APIs, and third-party system connections.",
+    icon: "backend",
+  },
+  {
+    title: "Cloud Services",
+    description:
+      "Using AWS for document storage, asynchronous processing, automated generation, and scalable backend operations.",
     icon: "cloud",
   },
   {
-    title: "Internal Enterprise Platforms",
+    title: "Enterprise Platforms",
     description:
-      "Developing tools used by HR, compliance, logistics, operations, and management teams.",
+      "Building internal software used daily across HR, compliance, logistics, workforce management, and operations teams.",
     icon: "enterprise",
   },
 ];
+
+/** @deprecated Use whatIBuild */
+export const systems = whatIBuild;

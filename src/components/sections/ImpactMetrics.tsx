@@ -11,7 +11,7 @@ export function ImpactMetrics() {
           title="Measurable business outcomes"
           description="Production systems designed to reduce manual work, improve data accuracy, and deliver operational efficiency at scale."
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {metrics.map((metric) => (
             <MetricCard key={metric.label} {...metric} />
           ))}

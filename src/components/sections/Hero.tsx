@@ -1,7 +1,7 @@
 import { siteConfig } from "@/data/site";
 import { heroKeywords } from "@/data/skills";
 import { KeywordPill } from "@/components/ui/KeywordPill";
-import { SystemDiagram } from "@/components/ui/SystemDiagram";
+import { WorkflowDiagram } from "@/components/ui/WorkflowDiagram";
 
 export function Hero() {
   return (
@@ -19,13 +19,18 @@ export function Hero() {
               {siteConfig.title} · {siteConfig.location}
             </p>
             <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-              Software Engineer building backend systems, workflow automation
-              platforms, and production-grade business applications.
+              Software Engineer focused on workflow automation, backend systems,
+              and enterprise applications.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-              I design and develop API-driven systems, cloud-integrated
-              workflows, and scalable full-stack applications that reduce manual
-              work and improve operational efficiency.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/80">
+              Currently building production workflow automation and operational
+              systems used across hiring, compliance, logistics, and workforce
+              management.
+            </p>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+              I build API-driven backend systems, workflow automation platforms,
+              and cloud-integrated enterprise software that transform manual
+              business processes into scalable digital systems.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -51,7 +56,7 @@ export function Hero() {
           </div>
 
           <div className="animate-fade-in-up animation-delay-200">
-            <SystemDiagram />
+            <WorkflowDiagram />
           </div>
         </div>
       </div>

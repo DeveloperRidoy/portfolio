@@ -2,7 +2,7 @@ export interface ExperienceItem {
   role: string;
   company: string;
   period: string;
-  description: string;
+  highlights: string[];
 }
 
 export const experience: ExperienceItem[] = [
@@ -10,21 +10,30 @@ export const experience: ExperienceItem[] = [
     role: "Software Engineer",
     company: "SSP Group of Companies",
     period: "Jan 2025 – Present",
-    description:
-      "Built production workflow automation systems, onboarding platforms, attendance tracking automation, reporting tools, and cross-department internal applications.",
+    highlights: [
+      "Designed and developed workflow automation platforms used across HR, safety, compliance, and operations teams.",
+      "Built onboarding, attendance tracking, reporting, and workforce management systems supporting daily business operations.",
+      "Developed cloud-integrated services and internal tools that reduced manual effort and improved operational visibility.",
+    ],
   },
   {
-    role: "Full-stack Web Developer",
+    role: "Software Developer",
     company: "B. Nestor Logistics Inc.",
     period: "Jan 2024 – Jan 2025",
-    description:
-      "Built logistics automation platform, QuickBooks invoicing integration, compliance document generation, RBAC, AWS deployment, and CI/CD workflows.",
+    highlights: [
+      "Designed logistics and financial automation systems including dispatch workflows, load management, and invoicing pipelines.",
+      "Integrated QuickBooks for automated billing, reducing manual invoice preparation and financial data re-entry.",
+      "Built compliance reporting and document automation tools that replaced spreadsheet-based operational workflows.",
+    ],
   },
   {
     role: "Software Engineer / Full-stack Developer",
     company: "Freelance & Contract",
     period: "Mar 2019 – Jan 2024",
-    description:
-      "Delivered 15+ web applications, APIs, cloud deployments, and integrations for startups and SMBs.",
+    highlights: [
+      "Delivered API-driven applications and business automation tools for startups and SMB clients.",
+      "Built cloud-integrated software with third-party API connections and deployment pipelines.",
+      "Developed custom software solutions spanning e-commerce, real-time applications, and internal business tools.",
+    ],
   },
 ];
