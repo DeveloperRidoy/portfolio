@@ -1,62 +1,167 @@
 import { siteConfig } from "@/data/site";
-import { heroKeywords } from "@/data/skills";
-import { KeywordPill } from "@/components/ui/KeywordPill";
-import { WorkflowDiagram } from "@/components/ui/WorkflowDiagram";
+import { projects } from "@/data/projects";
+import { coreTechnologies } from "@/data/toolkit";
+import { MediaFrame } from "@/components/ui/MediaFrame";
+import { Tag } from "@/components/ui/Tag";
+
+function HeroPanel({
+  projectId,
+  eager,
+}: {
+  projectId: "drivedock" | "neon-shop";
+  eager: boolean;
+}) {
+  const project = projects.find((item) => item.id === projectId);
+  if (!project) return null;
+
+  const media = project.media[0];
+  const accent = project.accent ?? "cobalt";
+
+  if (media) {
+    return (
+      <MediaFrame
+        media={media}
+        accent={accent}
+        loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : "auto"}
+        sizes="(max-width: 1023px) 100vw, 46vw"
+      />
+    );
+  }
+
+  return (
+    <div
+      className={`on-stage relative overflow-hidden rounded-2xl bg-stage p-6 ${
+        accent === "neon"
+          ? "ring-1 ring-inset ring-[color:var(--neon-magenta)]/35"
+          : "ring-1 ring-inset ring-white/10"
+      }`}
+    >
+      {accent === "neon" && (
+        <div
+          className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[color:var(--neon-magenta)]/25 blur-3xl"
+          aria-hidden="true"
+        />
+      )}
+      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-on-stage-muted">
+        {project.status.split(" · ")[0]}
+      </p>
+      <p className="mt-3 text-lg font-semibold text-on-stage">
+        {project.title}
+      </p>
+      <p className="mt-1.5 text-sm leading-snug text-on-stage-muted">
+        {project.subtitle}
+      </p>
+      <div className="mt-5 flex flex-wrap gap-1.5">
+        {project.stack.slice(0, 4).map((item) => (
+          <span
+            key={item}
+            className="rounded-full border border-stage-border px-2.5 py-1 font-mono text-[10px] text-on-stage-muted"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
+    <section id="top" className="relative overflow-hidden pb-16 pt-14 sm:pb-24 sm:pt-20">
       <div
-        className="pointer-events-none absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-accent/5 blur-3xl"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-accent-soft/70 to-transparent"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-6xl px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="animate-fade-in-up">
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
-              {siteConfig.title} · {siteConfig.location}
-            </p>
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-              Software Engineer focused on workflow automation, backend systems,
-              and enterprise applications.
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/80">
-              Currently building production workflow automation and operational
-              systems used across hiring, compliance, logistics, and workforce
-              management.
-            </p>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              I build API-driven backend systems, workflow automation platforms,
-              and cloud-integrated enterprise software that transform manual
-              business processes into scalable digital systems.
+      <div className="relative mx-auto max-w-[1280px] px-6">
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
+          <div className="animate-rise">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-accent">
+              Full-Stack Software Engineer · Kitchener, Ontario
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <h1 className="mt-5 text-balance text-[2.15rem] font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.35rem]">
+              I build full-stack products that automate complex operations and
+              connect business systems.
+            </h1>
+
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-soft">
+              I design and ship complete applications—from polished React
+              interfaces and workflow engines to APIs, third-party integrations,
+              cloud infrastructure, and CI/CD.
+            </p>
+
+            <p className="mt-4 max-w-xl leading-relaxed text-muted">
+              Currently building software used across hiring, onboarding,
+              compliance, logistics, workforce management, invoicing, and
+              reporting.
+            </p>
+
+            <p className="mt-7 border-l-2 border-accent pl-4 font-mono text-sm text-muted-strong">
+              Workflow Automation · APIs &amp; Integrations · Cloud &amp; DevOps
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="#case-studies"
-                className="inline-flex items-center rounded-md bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20"
+                href="#work"
+                className="inline-flex items-center rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
               >
-                View Case Studies
+                View selected work
               </a>
               <a
                 href={siteConfig.resumeUrl}
-                className="inline-flex items-center rounded-md border border-border bg-surface px-6 py-3 text-sm font-medium text-foreground transition-all hover:border-accent/40 hover:bg-accent/5"
+                className="inline-flex items-center rounded-lg border border-border-strong bg-surface px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
               >
-                Download Resume
+                Download resume
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-2">
-              {heroKeywords.map((keyword) => (
-                <KeywordPill key={keyword}>{keyword}</KeywordPill>
+            <ul className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+              <li>
+                <a
+                  href={siteConfig.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+                >
+                  Email
+                </a>
+              </li>
+            </ul>
+
+            <ul className="mt-8 flex flex-wrap gap-2">
+              {coreTechnologies.map((tech) => (
+                <li key={tech}>
+                  <Tag>{tech}</Tag>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          <div className="animate-fade-in-up animation-delay-200">
-            <WorkflowDiagram />
+          <div className="animate-rise delay-1 space-y-5 lg:pt-6">
+            <HeroPanel projectId="drivedock" eager />
+            <div className="sm:pl-8 lg:pl-12">
+              <HeroPanel projectId="neon-shop" eager={false} />
+            </div>
           </div>
         </div>
       </div>

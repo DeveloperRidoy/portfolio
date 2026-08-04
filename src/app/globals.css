@@ -1,27 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --muted: #64748b;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --border: #e2e8f0;
+  --background: #f6f7f9;
   --surface: #ffffff;
-  --surface-elevated: #f1f5f9;
-  --surface-muted: #f1f5f9;
+  --surface-muted: #eef1f6;
+  --surface-sunken: #e7ebf2;
+
+  --foreground: #0b1220;
+  --foreground-soft: #26324a;
+  --muted: #586274;
+  --muted-strong: #414c60;
+
+  --border: #dde3ec;
+  --border-strong: #c8d1de;
+
+  --accent: #1e46c8;
+  --accent-hover: #17389f;
+  --accent-soft: #e8edfb;
+
+  --support: #0f766e;
+  --support-soft: #e2f4f1;
+
+  --stage: #0a101f;
+  --stage-soft: #141d33;
+  --stage-border: #26324a;
+  --on-stage: #f4f6fb;
+  --on-stage-muted: #a8b3c8;
+
+  --neon-magenta: #f043b4;
+  --neon-cyan: #3ddbf0;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-sunken: var(--surface-sunken);
+
   --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
   --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  --color-border: var(--border);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-surface-muted: var(--surface-muted);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-support: var(--support);
+  --color-support-soft: var(--support-soft);
+
+  --color-stage: var(--stage);
+  --color-stage-soft: var(--stage-soft);
+  --color-stage-border: var(--stage-border);
+  --color-on-stage: var(--on-stage);
+  --color-on-stage-muted: var(--on-stage-muted);
+
+  --color-neon-magenta: var(--neon-magenta);
+  --color-neon-cyan: var(--neon-cyan);
+
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains);
 }
@@ -34,17 +73,29 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+  background-color: color-mix(in srgb, var(--accent) 18%, transparent);
   color: var(--foreground);
 }
 
-@keyframes fade-in-up {
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Focus ring stays legible against the dark project stages. */
+.on-stage :focus-visible {
+  outline-color: var(--neon-cyan);
+}
+
+@keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -52,29 +103,35 @@ body {
   }
 }
 
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.4;
+.animate-rise {
+  animation: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.delay-1 {
+  animation-delay: 90ms;
+}
+
+.delay-2 {
+  animation-delay: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  50% {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-rise {
     opacity: 1;
+    transform: none;
   }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-.animation-delay-200 {
-  animation-delay: 200ms;
-  opacity: 0;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 2s ease-in-out infinite;
-}
-
-.max-w-prose {
-  max-width: 65ch;
 }

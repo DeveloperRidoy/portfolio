@@ -1,30 +1,28 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { ImpactMetrics } from "@/components/sections/ImpactMetrics";
-import { EngineeringProfile } from "@/components/sections/EngineeringProfile";
-import { EngineeringChallenges } from "@/components/sections/EngineeringChallenges";
-import { BusinessOperations } from "@/components/sections/BusinessOperations";
-import { CaseStudies } from "@/components/sections/CaseStudies";
-import { Skills } from "@/components/sections/Skills";
+import { ProofStrip } from "@/components/sections/ProofStrip";
+import { SelectedWork } from "@/components/sections/SelectedWork";
+import { Specializations } from "@/components/sections/Specializations";
 import { Experience } from "@/components/sections/Experience";
+import { Toolkit } from "@/components/sections/Toolkit";
 import { EarlierProjects } from "@/components/sections/EarlierProjects";
+import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex-1">
+      <main id="main-content" tabIndex={-1} className="flex-1">
         <Hero />
-        <ImpactMetrics />
-        <EngineeringProfile />
-        <BusinessOperations />
-        <EngineeringChallenges />
-        <CaseStudies />
-        <Skills />
+        <ProofStrip />
+        <SelectedWork />
+        <Specializations />
         <Experience />
+        <Toolkit />
         <EarlierProjects />
+        <Education />
         <Contact />
       </main>
       <Footer />

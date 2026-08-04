@@ -2,29 +2,30 @@ interface SectionHeaderProps {
   label?: string;
   title: string;
   description?: string;
-  align?: "left" | "center";
+  id?: string;
 }
 
 export function SectionHeader({
   label,
   title,
   description,
-  align = "left",
+  id,
 }: SectionHeaderProps) {
-  const alignClass = align === "center" ? "text-center mx-auto" : "";
-
   return (
-    <div className={`mb-12 max-w-3xl ${alignClass}`}>
+    <div className="max-w-3xl">
       {label && (
-        <p className="mb-3 font-mono text-xs font-medium uppercase tracking-widest text-accent">
+        <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
           {label}
         </p>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <h2
+        id={id}
+        className="text-balance text-3xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
+      >
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-lg leading-relaxed text-muted">{description}</p>
+        <p className="mt-5 text-lg leading-relaxed text-muted">{description}</p>
       )}
     </div>
   );
