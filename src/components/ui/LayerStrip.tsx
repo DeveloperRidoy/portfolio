@@ -18,7 +18,7 @@ interface LayerStripProps {
   dark?: boolean;
 }
 
-/** Compact three-layer indicator used alongside a product screenshot. */
+/** Compact three-layer indicator — subordinate to product screenshots. */
 export function LayerStrip({
   layers,
   accent = "cobalt",
@@ -26,22 +26,22 @@ export function LayerStrip({
 }: LayerStripProps) {
   return (
     <dl
-      className={`grid gap-px overflow-hidden rounded-xl border sm:grid-cols-3 ${
+      className={`grid gap-px overflow-hidden rounded-lg border sm:grid-cols-3 ${
         dark ? "border-stage-border bg-stage-border" : "border-border bg-border"
       }`}
     >
       {layers.map((layer) => (
         <div
           key={layer.label}
-          className={`px-4 py-3.5 ${dark ? "bg-stage" : "bg-surface"}`}
+          className={`px-3 py-2.5 ${dark ? "bg-stage" : "bg-surface"}`}
         >
           <dt
-            className={`flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] ${
+            className={`flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] ${
               dark ? "text-on-stage-muted" : "text-muted"
             }`}
           >
             <span
-              className={`h-1.5 w-1.5 shrink-0 rounded-full ${
+              className={`h-1 w-1 shrink-0 rounded-full ${
                 dark ? stageMarker[accent] : inlineMarker[accent]
               }`}
               aria-hidden="true"
@@ -49,8 +49,8 @@ export function LayerStrip({
             {layer.label}
           </dt>
           <dd
-            className={`mt-1.5 text-sm leading-snug ${
-              dark ? "text-on-stage" : "text-foreground-soft"
+            className={`mt-1 text-xs leading-snug ${
+              dark ? "text-on-stage-muted" : "text-muted"
             }`}
           >
             {layer.detail}
@@ -68,12 +68,14 @@ interface LayerPlateProps {
   stack: string[];
   /** Use when the plate sits inside an already-dark section. */
   nested?: boolean;
+  /** Smaller plate used as Neon Shop's supporting technical visual. */
+  compact?: boolean;
 }
 
 /**
- * Editorial stand-in used when a project has no publishable screenshot yet.
- * It presents the same three-layer breakdown at display scale — it never
- * imitates the product's own interface.
+ * Editorial system-breakdown plate. Used as Neon Shop's supporting visual
+ * beside the builder screenshot, and as a full fallback when a project has
+ * no media slots. Never imitates a product interface.
  */
 export function LayerPlate({
   layers,
@@ -81,10 +83,13 @@ export function LayerPlate({
   stack,
   accent = "cobalt",
   nested = false,
+  compact = false,
 }: LayerPlateProps) {
   return (
     <div
-      className={`on-stage relative overflow-hidden rounded-2xl p-7 sm:p-9 ${
+      className={`on-stage relative overflow-hidden rounded-2xl ${
+        compact ? "p-5 sm:p-6" : "p-7 sm:p-9"
+      } ${
         nested
           ? "border border-stage-border bg-white/[0.04]"
           : "bg-stage ring-1 ring-inset ring-white/10"
@@ -98,12 +103,12 @@ export function LayerPlate({
         {title} · system breakdown
       </p>
 
-      <ol className="mt-6 space-y-4">
+      <ol className={compact ? "mt-4 space-y-3" : "mt-6 space-y-4"}>
         {layers.map((layer, index) => (
-          <li key={layer.label} className="flex gap-4">
+          <li key={layer.label} className="flex gap-3">
             <div className="flex flex-col items-center pt-1.5">
               <span
-                className={`h-2 w-2 shrink-0 rounded-full ${stageMarker[accent]}`}
+                className={`h-1.5 w-1.5 shrink-0 rounded-full ${stageMarker[accent]}`}
                 aria-hidden="true"
               />
               {index < layers.length - 1 && (
@@ -113,11 +118,15 @@ export function LayerPlate({
                 />
               )}
             </div>
-            <div className="pb-1">
-              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-on-stage-muted">
+            <div className="pb-0.5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-on-stage-muted">
                 {layer.label}
               </p>
-              <p className="mt-1 text-[15px] leading-snug text-on-stage">
+              <p
+                className={`mt-0.5 leading-snug text-on-stage ${
+                  compact ? "text-sm" : "text-[15px]"
+                }`}
+              >
                 {layer.detail}
               </p>
             </div>
@@ -125,8 +134,12 @@ export function LayerPlate({
         ))}
       </ol>
 
-      <div className="mt-7 flex flex-wrap gap-1.5 border-t border-stage-border pt-6">
-        {stack.slice(0, 6).map((item) => (
+      <div
+        className={`flex flex-wrap gap-1.5 border-t border-stage-border ${
+          compact ? "mt-5 pt-4" : "mt-7 pt-6"
+        }`}
+      >
+        {stack.slice(0, compact ? 5 : 6).map((item) => (
           <span
             key={item}
             className="rounded-full border border-stage-border px-2.5 py-1 font-mono text-[10px] text-on-stage-muted"

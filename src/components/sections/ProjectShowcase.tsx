@@ -74,7 +74,9 @@ function Intro({ project, dark }: ToneProps) {
 }
 
 function Details({ project, dark }: ToneProps) {
-  const hasMedia = project.media.length > 0;
+  const hasScreenshotSlots = project.media.length > 0;
+  /** Neon Shop already shows layers via the supporting LayerPlate. */
+  const showLayerStrip = hasScreenshotSlots && project.accent !== "neon";
 
   return (
     <div
@@ -82,8 +84,8 @@ function Details({ project, dark }: ToneProps) {
         dark ? "border-stage-border" : "border-border"
       }`}
     >
-      {hasMedia && (
-        <div className="mb-9">
+      {showLayerStrip && (
+        <div className="mb-8">
           <LayerStrip
             layers={project.layers}
             accent={project.accent}

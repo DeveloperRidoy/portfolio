@@ -13,7 +13,7 @@ export function Experience() {
         <SectionHeader
           id="experience-heading"
           label="Experience"
-          title="Six years shipping software people use to run a business"
+          title="Building software people use to run a business"
         />
 
         <ol className="mt-14 space-y-14">

@@ -1,15 +1,45 @@
 export type ProjectAccent = "cobalt" | "teal" | "neon";
 
-export interface ProjectMedia {
-  src: string;
+export type MediaRole = "primary" | "secondary";
+
+/** Ideal capture size for every project screenshot slot. */
+export const PROJECT_MEDIA_WIDTH = 1440;
+export const PROJECT_MEDIA_HEIGHT = 900;
+
+interface ProjectMediaBase {
+  role: MediaRole;
+  /** Project name shown on placeholders and used in alt text. */
+  projectLabel: string;
+  /** Short screen name shown on placeholders. */
+  screen: string;
+  /** Final filename under public/images/projects/. */
+  filename: string;
   alt: string;
   /** Intrinsic pixel dimensions of the source file. */
   width: number;
   height: number;
   caption?: string;
-  type: "screenshot";
-  /** Object position used when the frame is shorter than the source image. */
+  /** Object position used only if a future layout crops the frame. */
   focal?: "top" | "center" | "bottom";
+}
+
+/** Slot awaiting a real PNG — renders a labeled CSS placeholder, never a broken path. */
+export type ProjectMediaPlaceholder = ProjectMediaBase & {
+  status: "placeholder";
+};
+
+/** Slot with a file on disk — set `src` to `/images/projects/${filename}`. */
+export type ProjectMediaReady = ProjectMediaBase & {
+  status: "ready";
+  src: string;
+};
+
+export type ProjectMedia = ProjectMediaPlaceholder | ProjectMediaReady;
+
+export function isMediaReady(
+  media: ProjectMedia,
+): media is ProjectMediaReady {
+  return media.status === "ready";
 }
 
 export interface ProjectLayer {
@@ -132,7 +162,30 @@ export const projects: Project[] = [
         detail: "MongoDB, S3, Lambda, Microsoft Entra ID, Vercel",
       },
     ],
-    media: [],
+    media: [
+      {
+        status: "placeholder",
+        role: "primary",
+        projectLabel: "DriveDock",
+        screen: "Safety / review operations dashboard",
+        filename: "drivedock-safety-processing.png",
+        alt: "DriveDock safety processing dashboard showing the driver onboarding lifecycle and review panels",
+        width: PROJECT_MEDIA_WIDTH,
+        height: PROJECT_MEDIA_HEIGHT,
+        focal: "top",
+      },
+      {
+        status: "placeholder",
+        role: "secondary",
+        projectLabel: "DriveDock",
+        screen: "Multilingual applicant workflow",
+        filename: "drivedock-applicant-workflow.png",
+        alt: "DriveDock multilingual applicant workflow with the language selector visible",
+        width: PROJECT_MEDIA_WIDTH,
+        height: PROJECT_MEDIA_HEIGHT,
+        focal: "top",
+      },
+    ],
     accent: "cobalt",
   },
   {
@@ -214,7 +267,30 @@ export const projects: Project[] = [
         detail: "MongoDB, S3, Lambda, Microsoft Graph, Entra ID",
       },
     ],
-    media: [],
+    media: [
+      {
+        status: "placeholder",
+        role: "primary",
+        projectLabel: "NPT Onboard",
+        screen: "HR onboarding-lifecycle dashboard",
+        filename: "npt-hr-dashboard.png",
+        alt: "NPT Onboard HR dashboard showing employee onboarding lifecycle statuses",
+        width: PROJECT_MEDIA_WIDTH,
+        height: PROJECT_MEDIA_HEIGHT,
+        focal: "top",
+      },
+      {
+        status: "placeholder",
+        role: "secondary",
+        projectLabel: "NPT Onboard",
+        screen: "Region-aware employee onboarding form",
+        filename: "npt-onboarding-form.png",
+        alt: "NPT Onboard region-aware employee onboarding form",
+        width: PROJECT_MEDIA_WIDTH,
+        height: PROJECT_MEDIA_HEIGHT,
+        focal: "top",
+      },
+    ],
     accent: "cobalt",
   },
   {
@@ -306,7 +382,19 @@ export const projects: Project[] = [
         detail: "MongoDB, Stripe, PayPal, Cloudinary, Vercel",
       },
     ],
-    media: [],
+    media: [
+      {
+        status: "placeholder",
+        role: "primary",
+        projectLabel: "Neon Shop",
+        screen: "Custom neon builder",
+        filename: "neonshop-builder.png",
+        alt: "Neon Shop custom neon builder with live preview and configuration controls",
+        width: PROJECT_MEDIA_WIDTH,
+        height: PROJECT_MEDIA_HEIGHT,
+        focal: "center",
+      },
+    ],
     links: [
       { label: "Source", href: "https://github.com/DeveloperRidoy/neonshop" },
       { label: "Live site", href: "https://neonshop.vercel.app" },
@@ -392,7 +480,30 @@ export const projects: Project[] = [
         detail: "MongoDB, Google Maps, Ticketmaster, OpenAI, S3",
       },
     ],
-    media: [],
+    media: [
+      {
+        status: "placeholder",
+        role: "primary",
+        projectLabel: "GeoEvent",
+        screen: "Map-based event discovery",
+        filename: "geoevent-map-discovery.png",
+        alt: "GeoEvent map-based event discovery interface with clustered markers",
+        width: PROJECT_MEDIA_WIDTH,
+        height: PROJECT_MEDIA_HEIGHT,
+        focal: "center",
+      },
+      {
+        status: "placeholder",
+        role: "secondary",
+        projectLabel: "GeoEvent",
+        screen: "Organizer analytics dashboard",
+        filename: "geoevent-organizer-analytics.png",
+        alt: "GeoEvent organizer analytics dashboard showing event performance metrics",
+        width: PROJECT_MEDIA_WIDTH,
+        height: PROJECT_MEDIA_HEIGHT,
+        focal: "top",
+      },
+    ],
     links: [
       { label: "Source", href: "https://github.com/DeveloperRidoy/GeoEventv2" },
       { label: "Live site", href: "https://geoevent.vercel.app" },

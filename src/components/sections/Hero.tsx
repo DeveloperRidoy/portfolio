@@ -1,33 +1,17 @@
 import { siteConfig } from "@/data/site";
 import { projects } from "@/data/projects";
 import { coreTechnologies } from "@/data/toolkit";
-import { MediaFrame } from "@/components/ui/MediaFrame";
 import { Tag } from "@/components/ui/Tag";
 
 function HeroPanel({
   projectId,
-  eager,
 }: {
   projectId: "drivedock" | "neon-shop";
-  eager: boolean;
 }) {
   const project = projects.find((item) => item.id === projectId);
   if (!project) return null;
 
-  const media = project.media[0];
   const accent = project.accent ?? "cobalt";
-
-  if (media) {
-    return (
-      <MediaFrame
-        media={media}
-        accent={accent}
-        loading={eager ? "eager" : "lazy"}
-        fetchPriority={eager ? "high" : "auto"}
-        sizes="(max-width: 1023px) 100vw, 46vw"
-      />
-    );
-  }
 
   return (
     <div
@@ -158,9 +142,9 @@ export function Hero() {
           </div>
 
           <div className="animate-rise delay-1 space-y-5 lg:pt-6">
-            <HeroPanel projectId="drivedock" eager />
+            <HeroPanel projectId="drivedock" />
             <div className="sm:pl-8 lg:pl-12">
-              <HeroPanel projectId="neon-shop" eager={false} />
+              <HeroPanel projectId="neon-shop" />
             </div>
           </div>
         </div>
