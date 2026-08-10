@@ -36,9 +36,7 @@ export type ProjectMediaReady = ProjectMediaBase & {
 
 export type ProjectMedia = ProjectMediaPlaceholder | ProjectMediaReady;
 
-export function isMediaReady(
-  media: ProjectMedia,
-): media is ProjectMediaReady {
+export function isMediaReady(media: ProjectMedia): media is ProjectMediaReady {
   return media.status === "ready";
 }
 
@@ -151,7 +149,8 @@ export const projects: Project[] = [
     layers: [
       {
         label: "Interface",
-        detail: "Multilingual applicant flow, safety dashboards, document review",
+        detail:
+          "Multilingual applicant flow, safety dashboards, document review",
       },
       {
         label: "Services & Workflow",
@@ -164,22 +163,24 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        status: "placeholder",
+        status: "ready",
         role: "primary",
         projectLabel: "DriveDock",
         screen: "Safety / review operations dashboard",
         filename: "drivedock-safety-processing.png",
+        src: "/images/projects/drivedock-safety-processing.png",
         alt: "DriveDock safety processing dashboard showing the driver onboarding lifecycle and review panels",
         width: PROJECT_MEDIA_WIDTH,
         height: PROJECT_MEDIA_HEIGHT,
         focal: "top",
       },
       {
-        status: "placeholder",
+        status: "ready",
         role: "secondary",
         projectLabel: "DriveDock",
         screen: "Multilingual applicant workflow",
         filename: "drivedock-applicant-workflow.png",
+        src: "/images/projects/drivedock-applicant-workflow.png",
         alt: "DriveDock multilingual applicant workflow with the language selector visible",
         width: PROJECT_MEDIA_WIDTH,
         height: PROJECT_MEDIA_HEIGHT,
@@ -260,7 +261,8 @@ export const projects: Project[] = [
       },
       {
         label: "Services & Workflow",
-        detail: "Invite and OTP sessions, lifecycle APIs, approvals, audit logs",
+        detail:
+          "Invite and OTP sessions, lifecycle APIs, approvals, audit logs",
       },
       {
         label: "Data, Integrations & Cloud",
