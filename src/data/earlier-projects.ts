@@ -64,7 +64,7 @@ export const earlierProjects: EarlierProject[] = [
   {
     title: "Socket Chat",
     description:
-      "Room-based real-time chat app with instant message broadcasting and seamless room switching.",
+      "Room-based real-time chat app with instant message broadcasting and room switching.",
     technologies: ["Node.js", "Express", "Socket.IO", "Tailwind CSS"],
     liveUrl: "https://socket-chat-mivu.onrender.com/",
     githubUrl: "https://github.com/DeveloperRidoy/socket-chat",

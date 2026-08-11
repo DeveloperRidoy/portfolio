@@ -12,7 +12,7 @@ export const proofPoints: ProofPoint[] = [
   },
   {
     value: "95%",
-    label: "Improvement in onboarding data accuracy",
+    label: "Onboarding data accuracy",
     context: "DriveDock, through structured validation and step gating",
   },
   {

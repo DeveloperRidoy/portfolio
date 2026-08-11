@@ -80,49 +80,43 @@ export const projects: Project[] = [
     subtitle:
       "Multilingual driver onboarding across applicant, safety, and compliance workflows",
     summary:
-      "A production driver-onboarding and compliance platform for Canadian and U.S. hiring workflows. As a full-stack engineer on the team, I contributed across the multilingual applicant experience, administrative review flows, backend workflow logic, document processing, integrations, and the lifecycle that moves drivers from prequalification through safety review, testing, training, and completion.",
+      "A production driver-onboarding and compliance platform for carrier hiring in Canada and the United States. It takes an applicant from prequalification through safety review, testing, training, and completion, with multilingual forms for drivers and review tooling for HR, safety, and compliance staff.",
     ownership:
-      "Team-built platform. My work spanned the applicant-facing flow, safety and compliance review screens, workflow and validation logic on the server, document generation, and the identity and storage integrations behind them.",
+      "Team-built platform. I designed and built the full backend, including the data model, lifecycle APIs, workflow and validation logic, document generation, identity and access control, file storage, notifications, and external integrations. I also contributed to frontend features in the applicant, safety, and compliance flows where the interface depended on complex backend state and validation.",
     challenge:
       "Hiring a driver meant moving paper packets between HR, safety, compliance, and operations, in two countries and three languages, with no shared view of where an applicant actually stood.",
     contributions: [
       {
         title: "Applicant experience",
         items: [
-          "Prequalification with country, company, and application-type selection",
-          "A five-page application form followed by policies and consents",
-          "English, French, and Spanish applicant experiences",
-          "Canadian/U.S., company-specific, and jurisdiction-specific forms and validation",
-          "Employment-history, licence, address, document, and competency validation",
+          "Prequalification by country, company, and application type",
+          "A five-page application form in English, French, and Spanish",
+          "Canadian/U.S., company-, and jurisdiction-specific forms with employment-history, licence, address, and competency validation",
           "Secure resumption using SIN/email verification, expiring codes, session cookies, and server-side step gating",
         ],
       },
       {
         title: "Lifecycle and safety review",
         items: [
-          "Ten required lifecycle stages plus conditional Flatbed Training",
-          "Drive Test, CarriersEdge Training, and Drug Test stages with conditional branching",
-          "Safety dashboards with search and filtering, applicant sections, and status visibility",
+          "Ten required lifecycle stages, with conditional branching into Drive Test, CarriersEdge Training, Drug Test, and Flatbed Training",
+          "Safety dashboards with search, filtering, and status visibility across applicants",
           "Notes, audit history, termination and restore, and document review",
         ],
       },
       {
         title: "Documents, identity, and delivery",
         items: [
-          "S3 presigned upload and download flows with MIME, folder, and size validation",
-          "Company- and jurisdiction-specific PDF generation and filling with pdf-lib, previewed through PDF.js/react-pdf-viewer",
-          "AWS Lambda processing with Puppeteer and PDFMake for automated document generation",
+          "Presigned upload and download flows with MIME, folder, and size validation",
+          "Serverless generation and filling of company- and jurisdiction-specific PDFs, previewed in the browser",
           "Generated onboarding forms, policies and consents, road-test certificates, and U.S. I-9/W-4 flows where applicable",
-          "Microsoft identity/NextAuth with SSP Portal access control",
-          "Notifications, completion PDF emails, Cloudflare Turnstile, GitHub Actions, and Vercel delivery",
+          "Microsoft identity with SSP Portal access control, plus notification and completion-PDF emails",
         ],
       },
     ],
     outcomes: [
+      "Achieved 95% onboarding data accuracy through structured validation and step gating",
       "Enabled paperless onboarding",
-      "Improved onboarding data accuracy by 95%",
       "Reduced manual coordination across HR, safety, compliance, and operations",
-      "Centralized applicant and lifecycle visibility",
     ],
     stack: [
       "Next.js",
@@ -195,7 +189,7 @@ export const projects: Project[] = [
     title: "NPT Onboard",
     subtitle: "Employee onboarding across Canada, the United States, and India",
     summary:
-      "A multi-tenant employee-onboarding platform that gives HR teams a secure, repeatable way to invite, verify, onboard, review, modify, approve, and manage employees across Canada, the United States, and India. I built core backend and workflow services spanning protected onboarding sessions, region-aware lifecycle APIs, document pipelines, email automation, auditability, reporting, and generated application packages.",
+      "A multi-tenant employee-onboarding platform for HR teams in Canada, the United States, and India. It covers the employee lifecycle from invitation and verified access through onboarding, review, modification, approval, and termination.",
     ownership:
       "Team-built platform. I owned core backend and workflow services: protected onboarding sessions, region-aware lifecycle APIs, document pipelines, email automation, reporting, and the audit trail.",
     challenge:
@@ -205,37 +199,33 @@ export const projects: Project[] = [
         title: "Secure onboarding access",
         items: [
           "Digital and manual onboarding paths",
-          "Invite tokens stored as HMAC hashes, with encrypted recoverability for the current HR link",
+          "Invite tokens stored as HMAC-SHA256 hashes, with AES-256-GCM encryption so HR can recover the current link",
           "One-time six-digit OTP with ten-minute expiry, resend throttling, failed-attempt lockout, and a secure session cookie",
-          "AES-256-GCM encryption and HMAC-SHA256 protection in the audited implementation",
         ],
       },
       {
         title: "Region-aware lifecycle",
         items: [
-          "Region-aware onboarding flows supporting Canada, the United States, and India",
-          "Multi-section employee forms with country-specific data requirements — the India flow covers personal details, government IDs, education, employment, certificates, bank details, declaration, and signature",
-          "Lifecycle states for invite/manual PDF, requested modifications, submitted and resubmitted, details confirmed, contract sent and submitted, approved, and terminated",
-          "HR actions for review, modification requests, detail confirmation, approval, termination, restore, resend, and deletion",
+          "Region-aware forms for Canada, the United States, and India — the India flow covers personal details, government IDs, education, employment, certificates, bank details, declaration, and signature",
+          "Lifecycle states from invite or manual PDF through submission, resubmission, detail confirmation, contract, approval, and termination",
+          "HR review, modification requests, approval, termination, restore, resend, and deletion",
           "Subsidiary-scoped search, filtering, sorting, pagination, bulk actions, and reporting",
         ],
       },
       {
         title: "Documents, email, and reporting",
         items: [
-          "S3 presigned uploads with temporary-to-final document moves, MIME and size validation, cleanup, rollback, and secure downloads",
+          "Presigned uploads with temporary-to-final moves, MIME and size validation, cleanup, rollback, and secure downloads",
           "Microsoft Graph email for invitations, OTP, modification, approval, termination, and attachments",
-          "Lambda-backed CSV/XLSX reporting with status tracking and S3 delivery",
-          "Lambda-backed application-form PDF generation using pdf-lib, including signatures and checkmarks with uploaded documents appended",
+          "Serverless CSV/XLSX reporting and application-form PDF generation, with signatures, checkmarks, and uploaded documents appended",
           "Audit logs and employee-lifecycle history",
         ],
       },
     ],
     outcomes: [
       "Gave HR a single onboarding path across three countries instead of three parallel processes",
-      "Replaced ad-hoc invitations with verified, time-limited, throttled access",
       "Made every lifecycle action reviewable through audit logs and employee history",
-      "Automated application packages and subsidiary reporting instead of assembling them by hand",
+      "Automated application-package generation and subsidiary reporting, replacing manual preparation.",
     ],
     stack: [
       "Next.js",
@@ -304,44 +294,36 @@ export const projects: Project[] = [
     subtitle:
       "Configurable-product eCommerce with payments, order operations, and administration",
     summary:
-      "A complete eCommerce platform I independently researched, designed, and built for a freelance client. It combines a responsive storefront, a live custom-neon builder, calculated dimensions and pricing, guest and customer checkout, multiple payment providers, order tracking, and an administrative workspace for products, categories, media, orders, and fulfilment.",
+      "An eCommerce platform for a freelance client selling made-to-order neon signs. Customers design and price a sign in a live builder, then buy it alongside catalogue products in a storefront the client administers.",
     ownership:
-      "I built the project end to end — from the configurable-product interface and storefront to API routes, MongoDB models, authentication, payment processing, verified webhooks, email workflows, media handling, order lifecycle, and admin tools.",
+      "I built the project end to end: storefront and builder interface, API routes and data models, authentication, payment processing with verified webhooks, email workflows, media handling, order lifecycle, and admin tools.",
     challenge:
-      "A made-to-order neon sign is not a catalogue item. The builder needed research into how a customizable physical product could be previewed, priced, persisted as structured commerce data, and carried intact through checkout and fulfilment.",
+      "A made-to-order neon sign is not a standard catalogue item. The configurator had to translate customer choices into a live preview, calculated pricing, structured order data, and a configuration that remained intact through checkout and fulfilment.",
     contributions: [
       {
         title: "Custom neon builder",
         items: [
           "Live neon text preview with glow and responsive scaling",
-          "21 fonts, 12 colors, and eight optional social/logo icons",
-          "Regular and large size models with calculated physical width",
-          "Dynamic price driven by text length, size, and icon choice",
-          "Clear, black, mirror, and gold-mirror acrylic finishes",
-          "Square, round, and cut-to-shape backing with wall or hanging mounts",
-          "Customer notes, validation, and approval consent",
+          "21 fonts, 12 colours, and eight optional social/logo icons",
+          "Regular and large size models with calculated physical width, acrylic finish, backing shape, and mount options",
+          "Dynamic pricing based on text length, size, and icon choice",
         ],
       },
       {
         title: "Storefront and commerce",
         items: [
           "Categories, product details, variants, sale percentages, search, and filters",
-          "Guest and registered-user carts and checkout, with standard and custom products in the same cart",
+          "Guest and registered-user checkout, with standard and custom products in the same cart",
           "Stripe card checkout, Afterpay/Clearpay through Stripe, and PayPal order creation and capture",
-          "Stripe webhook verification with pending and completed payment states",
-          "Transactional customer and business emails",
-          "Public order tracking using order ID and email",
-          "Customer order history, password reset, and address management",
+          "Verified payment webhooks driving pending and completed states, with transactional emails and public order tracking",
         ],
       },
       {
         title: "Operations and administration",
         items: [
-          "Full custom configuration stored in cart and order data",
-          "Custom preview and specification rendered in cart, tracking, and admin order interfaces",
-          "Admin dashboard with product and category CRUD",
-          "Order search and filtering, detail views, state updates, and bulk operations",
-          "Cloudinary upload and delete workflows with multiple product images",
+          "Full custom configuration stored with the order and rendered in cart, tracking, and admin views",
+          "Admin product and category CRUD with order search, filtering, state updates, and bulk operations",
+          "Media upload and delete workflows for multiple product images",
           "JWT authentication, HTTP-only cookies, password hashing, and role-based access",
         ],
       },
@@ -350,8 +332,6 @@ export const projects: Project[] = [
       "Delivered a complete client commerce operation as a solo developer",
       "Connected custom-product design directly to cart, payment, order, and fulfilment",
       "Gave the business an operational admin interface rather than requiring database or code changes",
-      "Supported multiple payment methods with guest and registered checkout",
-      "Demonstrated independent research and end-to-end ownership early in my career",
     ],
     stack: [
       "Next.js 12 (Pages Router)",
@@ -413,38 +393,34 @@ export const projects: Project[] = [
     subtitle:
       "Map-based event discovery, creation, registration, and organizer analytics",
     summary:
-      "A launched web platform for discovering, creating, and managing local events. GeoEvent combines first-party listings with Ticketmaster events, map-based discovery, registrations, organizer tools, analytics, role-based administration, and AI-assisted event creation and import.",
+      "A launched web platform for local event discovery and organizing. First-party listings and Ticketmaster events appear on one map, and organizers create, promote, and measure events in the same product.",
     ownership:
       "Built and launched for real users as a capstone project, covering the web application, the API layer, the data model, and every third-party integration behind it.",
     challenge:
-      "Local event discovery was split between first-party listings and external ticketing sources, and organizers had nowhere to publish an event, fill it, and then measure what happened.",
+      "Local event discovery was fragmented across first-party listings and external ticketing sources, while organizers lacked one place to publish events, attract attendees, and measure results.",
     contributions: [
       {
         title: "Discovery and attendance",
         items: [
           "Local events normalized alongside Ticketmaster events",
           "Google Maps advanced markers with marker clustering",
-          "Search and filtering by text, location, date, category, format, and event-language metadata",
-          "Saved events, registration and unregistration, confirmation email, and customer-facing event history",
-          "Post-event reviews and ratings limited to registered attendees",
+          "Filtering by text, location, date, category, format, and event language",
+          "Registration, saved events, confirmation emails, and post-event reviews limited to registered attendees",
         ],
       },
       {
         title: "Organizer tools and AI assistance",
         items: [
-          "Organizer event creation and editing with S3 image and video uploads",
-          "URL-based event import using Cheerio extraction and OpenAI structuring",
-          "AI-assisted event descriptions and event-banner generation",
-          "Organizer followers with notifications when a new event is published",
-          "Organizer analytics for event counts, views, registrations, average rating, top events, trends, and followers",
+          "Event creation and editing with image and video uploads",
+          "URL-based event import with AI extraction and structuring, plus generated descriptions and banners",
+          "Follower notifications when an organizer publishes a new event",
+          "Analytics for views, registrations, average rating, top events, trends, and followers",
         ],
       },
       {
         title: "Platform",
         items: [
-          "Next.js web application over a Route Handler API layer and a MongoDB/Mongoose data model",
-          "JWT/bcrypt authentication with admin, organizer, and user roles",
-          "Per-event view, share, and registration analytics",
+          "Authentication with admin, organizer, and user roles",
           "Administrative dashboards and public API documentation",
           "Jest/Supertest route tests",
         ],

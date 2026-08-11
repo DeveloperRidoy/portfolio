@@ -16,8 +16,8 @@ export const experience: ExperienceItem[] = [
     period: "Jan 2025 – Present",
     location: "Milton, Ontario",
     highlights: [
-      "Designed and developed DriveDock, digitizing driver onboarding across applicant, safety, compliance, and operations workflows.",
-      "Built multilingual applicant and internal review features using TypeScript, React, Next.js, MongoDB, AWS S3, identity integration, and document-generation tooling.",
+      "Designed and built DriveDock's full backend, digitizing driver onboarding across applicant, safety, compliance, and operations workflows.",
+      "Contributed to multilingual applicant and internal review interfaces whose behaviour depended on backend lifecycle state, validation, identity, storage, and document-generation services.",
       "Developed multi-region employee-lifecycle and workflow features supporting Canada, the United States, and India, including invitations, validation, documents, approvals, access control, and auditability.",
       "Automated attendance tracking and reporting, saving more than 100 staff hours monthly.",
       "Owned features from stakeholder requirements and technical design through implementation, deployment, and production support.",
@@ -46,7 +46,7 @@ export const experience: ExperienceItem[] = [
       "Built responsive applications, APIs, authentication systems, commerce workflows, and third-party integrations.",
       "Independently delivered Neon Shop as a complete client eCommerce and configurable-product platform.",
       "Deployed and maintained applications using AWS, GCP, Vercel, and Netlify.",
-      "Provided debugging, performance work, production maintenance, and client support.",
+      "Provided debugging, performance optimization, production maintenance, and client support.",
     ],
   },
 ];

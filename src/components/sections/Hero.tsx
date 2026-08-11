@@ -3,11 +3,7 @@ import { projects } from "@/data/projects";
 import { coreTechnologies } from "@/data/toolkit";
 import { Tag } from "@/components/ui/Tag";
 
-function HeroPanel({
-  projectId,
-}: {
-  projectId: "drivedock" | "neon-shop";
-}) {
+function HeroPanel({ projectId }: { projectId: "drivedock" | "neon-shop" }) {
   const project = projects.find((item) => item.id === projectId);
   if (!project) return null;
 
@@ -52,7 +48,10 @@ function HeroPanel({
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pb-16 pt-14 sm:pb-24 sm:pt-20">
+    <section
+      id="top"
+      className="relative overflow-hidden pb-16 pt-14 sm:pb-24 sm:pt-20"
+    >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-accent-soft/70 to-transparent"
         aria-hidden="true"
@@ -77,9 +76,8 @@ export function Hero() {
             </p>
 
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              Currently building software used across hiring, onboarding,
-              compliance, logistics, workforce management, invoicing, and
-              reporting.
+              My work spans hiring, onboarding, compliance, logistics, workforce
+              management, invoicing, and reporting.
             </p>
 
             <p className="mt-7 border-l-2 border-accent pl-4 font-mono text-sm text-muted-strong">
