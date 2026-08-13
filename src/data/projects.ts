@@ -2,7 +2,7 @@ export type ProjectAccent = "cobalt" | "teal" | "neon";
 
 export type MediaRole = "primary" | "secondary";
 
-/** Ideal capture size for every project screenshot slot. */
+/** 1× design size used by placeholder slots. Ready screenshots use the file's intrinsic pixels. */
 export const PROJECT_MEDIA_WIDTH = 1440;
 export const PROJECT_MEDIA_HEIGHT = 900;
 
@@ -164,8 +164,8 @@ export const projects: Project[] = [
         filename: "drivedock-safety-processing.png",
         src: "/images/projects/drivedock-safety-processing.png",
         alt: "DriveDock safety processing dashboard showing the driver onboarding lifecycle and review panels",
-        width: PROJECT_MEDIA_WIDTH,
-        height: PROJECT_MEDIA_HEIGHT,
+        width: 3200,
+        height: 2000,
         focal: "top",
       },
       {
@@ -176,8 +176,8 @@ export const projects: Project[] = [
         filename: "drivedock-applicant-workflow.png",
         src: "/images/projects/drivedock-applicant-workflow.png",
         alt: "DriveDock multilingual applicant workflow with the language selector visible",
-        width: PROJECT_MEDIA_WIDTH,
-        height: PROJECT_MEDIA_HEIGHT,
+        width: 3200,
+        height: 2000,
         focal: "top",
       },
     ],
@@ -268,8 +268,8 @@ export const projects: Project[] = [
         filename: "npt-hr-dashboard.png",
         src: "/images/projects/npt-hr-dashboard.png",
         alt: "NPT Onboard HR dashboard showing employee onboarding lifecycle statuses",
-        width: PROJECT_MEDIA_WIDTH,
-        height: PROJECT_MEDIA_HEIGHT,
+        width: 2880,
+        height: 1800,
         focal: "top",
       },
       {
@@ -280,8 +280,8 @@ export const projects: Project[] = [
         filename: "npt-onboarding-form.png",
         src: "/images/projects/npt-onboarding-form.png",
         alt: "NPT Onboard region-aware employee onboarding form",
-        width: PROJECT_MEDIA_WIDTH,
-        height: PROJECT_MEDIA_HEIGHT,
+        width: 2880,
+        height: 1800,
         focal: "top",
       },
     ],
@@ -375,8 +375,8 @@ export const projects: Project[] = [
         filename: "neonshop-builder.png",
         src: "/images/projects/neonshop-builder.png",
         alt: "Neon Shop custom neon builder with live preview and configuration controls",
-        width: PROJECT_MEDIA_WIDTH,
-        height: PROJECT_MEDIA_HEIGHT,
+        width: 2880,
+        height: 1728,
         focal: "center",
       },
     ],
@@ -470,8 +470,8 @@ export const projects: Project[] = [
         filename: "geoevent-map-discovery.png",
         src: "/images/projects/geoevent-map-discovery.png",
         alt: "GeoEvent map-based event discovery interface with clustered markers",
-        width: PROJECT_MEDIA_WIDTH,
-        height: PROJECT_MEDIA_HEIGHT,
+        width: 2880,
+        height: 1728,
         focal: "center",
       },
       {
@@ -482,8 +482,8 @@ export const projects: Project[] = [
         filename: "geoevent-organizer-analytics.png",
         src: "/images/projects/geoevent-organizer-analytics.png",
         alt: "GeoEvent organizer analytics dashboard showing event performance metrics",
-        width: PROJECT_MEDIA_WIDTH,
-        height: PROJECT_MEDIA_HEIGHT,
+        width: 3132,
+        height: 1728,
         focal: "top",
       },
     ],

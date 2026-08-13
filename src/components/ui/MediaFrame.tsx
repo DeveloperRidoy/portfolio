@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { InspectableImage } from "@/components/ui/InspectableImage";
 import type { ProjectAccent, ProjectMedia } from "@/data/projects";
 import { isMediaReady } from "@/data/projects";
 
@@ -103,7 +103,7 @@ export function MediaFrame({
   }
 
   const image = (
-    <Image
+    <InspectableImage
       src={media.src}
       alt={media.alt}
       width={media.width}
@@ -111,8 +111,8 @@ export function MediaFrame({
       sizes={sizes}
       loading={loading}
       fetchPriority={fetchPriority}
-      className="h-auto w-full rounded-lg object-contain"
-      style={media.focal ? { objectPosition: media.focal } : undefined}
+      focal={media.focal}
+      caption={media.caption ?? media.screen}
     />
   );
 
